@@ -101,8 +101,8 @@ class Weather(Producer):
                    # TODO: Provide key schema, value schema, and records
                    #
                    #
-                   "key_schema": json.dumps(self.key_schema),
-                   "value_schema": json.dumps(self.value_schema),
+                   "key_schema": json.dumps(Weather.key_schema),
+                   "value_schema": json.dumps(Weather.value_schema),
                    "records": [{
                        "key": {"timestamp": self.time_millis()},
                        "value": {"temperature": self.temp, "status": self.status.name}

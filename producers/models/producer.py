@@ -61,7 +61,7 @@ class Producer:
         # the Kafka Broker.
         #
         #
-        client = AdminClient(self.broker_properties)
+        client = AdminClient({"bootstrap.servers": self.broker_properties.get("bootstrap.servers")})
         futures = client.create_topics(
             [
                 NewTopic(
