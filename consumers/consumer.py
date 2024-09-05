@@ -41,7 +41,7 @@ class KafkaConsumer:
             "bootstrap.servers": "PLAINTEXT://localhost:9092,PLAINTEXT://localhost:9093,PLAINTEXT://localhost:9094",
             "schema.registry.url": "http://localhost:8081",
             "group.id": "transportation.consumer",
-            "default.topic.config": {"auto.offset.reset": "earliest" if self.offset_earliest is True else "latest"},
+            "default.topic.config": {"auto.offset.reset": "earliest" if self.offset_earliest else "latest"},
         }
 
         # TODO: Create the Consumer, using the appropriate type.
@@ -50,13 +50,13 @@ class KafkaConsumer:
                 "bootstrap.servers": self.broker_properties.get("bootstrap.servers"),
                 "schema.registry.url": self.broker_properties.get("schema.registry.url"),
                 "group.id": self.broker_properties.get("group.id"),
-                "auto.offset.reset": "earliest" if self.offset_earliest is True else "latest"
+                "auto.offset.reset": "earliest" if self.offset_earliest else "latest"
             })
         else:
             self.consumer = Consumer({
                 "bootstrap.servers": self.broker_properties.get("bootstrap.servers"),
                 "group.id": self.broker_properties.get("group.id"),
-                "auto.offset.reset": "earliest" if self.offset_earliest is True else "latest"
+                "auto.offset.reset": "earliest" if self.offset_earliest else "latest"
             })
 
         #
